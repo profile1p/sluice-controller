@@ -53,7 +53,7 @@ public class SensorProtocol {
     }
 
 
-    public void write(SensorMsgBean msg) throws IOException {
+    public synchronized void write(SensorMsgBean msg) throws IOException {
         byte[] buffer = sensorMsgBean2ByteArray(msg);
         sensor.write(buffer);
     }
@@ -85,7 +85,7 @@ public class SensorProtocol {
         return num.byteValue();
     }
 
-    public SensorMsgBean read() throws IOException, PortStreamClosedException, Crc16CheckFailedException {
+    public synchronized SensorMsgBean read() throws IOException, PortStreamClosedException, Crc16CheckFailedException {
         SensorMsgBean msg = new SensorMsgBean();
         msg.setAddress(sensor.read());
         msg.setFunction(sensor.read());

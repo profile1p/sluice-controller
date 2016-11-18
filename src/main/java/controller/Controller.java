@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author Lilx
  * @since 2016
  */
-public interface ControllerI {
+public interface Controller {
     SerialPort open(SerialPortConfigBean config, String portName) throws NoSuchPortException, PortInUseException, UnsupportedCommOperationException, IOException;
 
     void close() throws IOException;

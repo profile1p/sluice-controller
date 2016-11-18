@@ -14,7 +14,7 @@ import java.io.*;
  * @author Lilx
  * @since 2016
  */
-public class SerialController implements ControllerI {
+public class SerialController implements Controller {
     private volatile boolean isOpen = false;
     private CommPort commPort;
     private SerialPort serialPort;
@@ -63,7 +63,7 @@ public class SerialController implements ControllerI {
     }
 
     @Override
-    public void write(byte[] bytes) throws IOException {
+    public synchronized void write(byte[] bytes) throws IOException {
         if (isOpen) {
             out.write(bytes);
             out.flush();
@@ -73,12 +73,12 @@ public class SerialController implements ControllerI {
     }
 
     @Override
-    public int read() throws IOException {
+    public synchronized int read() throws IOException {
         return in.read();
     }
 
     @Override
-    public int read(byte[] buffer) throws IOException {
+    public synchronized int read(byte[] buffer) throws IOException {
         int length = 0;
         while (in.available() > 0 && length < buffer.length) {
             length += in.read(buffer, length, buffer.length - length);

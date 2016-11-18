@@ -57,7 +57,7 @@ public class RadioProtocol {
         return radio.isOpen();
     }
 
-    public void write(RadioMsgBean msg) throws IOException {
+    public synchronized void write(RadioMsgBean msg) throws IOException {
         byte[] buffer = radioMsgBean2ByteArray(msg);
         radio.write(buffer);
     }
@@ -66,7 +66,7 @@ public class RadioProtocol {
         return gson.toJson(msg).getBytes();
     }
 
-    public RadioMsgBean read() throws IOException, PortStreamClosedException, Crc16CheckFailedException {
+    public synchronized RadioMsgBean read() throws IOException, PortStreamClosedException, Crc16CheckFailedException {
         int readByte;
         StringBuilder dataStringBuilder = new StringBuilder();
         String dataString;
@@ -78,9 +78,9 @@ public class RadioProtocol {
                 dataStringBuilder.append((char) readByte);
             } else if (-1 == readByte) {
                 throw new PortStreamClosedException();
-            } else {
+            }/* else {
                 //TODO:ask 非ADCii码处理方式，是抛弃还是仍然处理
-            }
+            }*/
         }
         dataString = dataStringBuilder.toString();
         int readCrc16LowByte = radio.read();

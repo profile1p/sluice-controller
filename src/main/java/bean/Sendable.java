@@ -18,6 +18,7 @@ public interface Sendable {
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
+                return 0;
             }
         }
         return length;
