@@ -1,10 +1,10 @@
-package controller.protocol;
+package comm.protocol;
 
 import bean.RadioMsgBean;
 import bean.SerialPortConfigBean;
 import com.google.gson.Gson;
 import common.CRC16;
-import controller.SerialController;
+import comm.SerialController;
 import exception.Crc16CheckFailedException;
 import exception.PortStreamClosedException;
 import gnu.io.NoSuchPortException;
@@ -14,9 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @author Lilx

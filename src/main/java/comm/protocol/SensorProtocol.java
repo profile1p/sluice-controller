@@ -1,9 +1,9 @@
-package controller.protocol;
+package comm.protocol;
 
 import bean.SensorMsgBean;
 import bean.SerialPortConfigBean;
 import common.CRC16;
-import controller.SerialController;
+import comm.SerialController;
 import exception.Crc16CheckFailedException;
 import exception.PortStreamClosedException;
 import gnu.io.NoSuchPortException;

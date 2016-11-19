@@ -1,4 +1,4 @@
-package controller;
+package comm;
 
 import bean.SerialPortConfigBean;
 import gnu.io.NoSuchPortException;
