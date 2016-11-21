@@ -16,7 +16,6 @@ import java.io.*;
  */
 public class SerialController implements Controller {
     private volatile boolean isOpen = false;
-    private CommPort commPort;
     private SerialPort serialPort;
     private BufferedOutputStream out;
     private BufferedInputStream in;
@@ -32,12 +31,11 @@ public class SerialController implements Controller {
         }
         if (!isOpen) {
             CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(config.getPort());
-            this.commPort = portIdentifier.open(portName, config.getTimeout());
+            CommPort commPort = portIdentifier.open(portName, config.getTimeout());
             if (commPort instanceof SerialPort) {
-                SerialPort serialPort = (SerialPort) commPort;
+                this.serialPort = (SerialPort) commPort;
                 serialPort.setSerialPortParams(config.getBaudrate(), config.getDataBit(), config.getStopBit(), config.getParityBit());
                 System.out.println("Open " + portName + " on " + config.getPort() + " successful!");
-                this.serialPort = serialPort;
                 this.in = new BufferedInputStream(new DataInputStream(serialPort.getInputStream()));
                 this.out = new BufferedOutputStream(new DataOutputStream(serialPort.getOutputStream()));
                 this.isOpen = true;
@@ -57,7 +55,7 @@ public class SerialController implements Controller {
         if (isOpen) {
             in.close();
             out.close();
-            commPort.close();
+            serialPort.close();
             this.isOpen = false;
         }
     }

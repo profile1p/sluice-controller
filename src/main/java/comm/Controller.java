@@ -6,13 +6,14 @@ import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
 import gnu.io.UnsupportedCommOperationException;
 
+import java.io.Closeable;
 import java.io.IOException;
 
 /**
  * @author Lilx
  * @since 2016
  */
-public interface Controller {
+public interface Controller extends Closeable {
     SerialPort open(SerialPortConfigBean config, String portName) throws NoSuchPortException, PortInUseException, UnsupportedCommOperationException, IOException;
 
     void close() throws IOException;
