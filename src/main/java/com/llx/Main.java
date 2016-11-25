@@ -1,16 +1,18 @@
-import bean.SerialPortConfigBean;
+package com.llx;
+
+import org.quartz.impl.StdScheduler;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
  * @author Lilx
  * @since 2016
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-        SerialPortConfigBean config = (SerialPortConfigBean) context.getBean("testInSpring");
-        System.out.println(config.getPort() + config.getBaudrate());
+        Thread.currentThread().sleep(20000);
         System.out.println("end");
     }
 }

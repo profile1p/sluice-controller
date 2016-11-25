@@ -1,12 +1,12 @@
-package comm.protocol;
+package com.llx.comm.protocol;
 
-import bean.RadioMsgBean;
-import bean.SerialPortConfigBean;
+import com.llx.bean.RadioMsgBean;
+import com.llx.bean.SerialPortConfigBean;
 import com.google.gson.Gson;
-import common.CRC16;
-import comm.SerialController;
-import exception.Crc16CheckFailedException;
-import exception.PortStreamClosedException;
+import com.llx.common.CRC16;
+import com.llx.comm.SerialController;
+import com.llx.exception.Crc16CheckFailedException;
+import com.llx.exception.PortStreamClosedException;
 import gnu.io.NoSuchPortException;
 import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;

@@ -1,6 +1,6 @@
-package comm;
+package com.llx.comm;
 
-import bean.SerialPortConfigBean;
+import com.llx.bean.SerialPortConfigBean;
 import gnu.io.NoSuchPortException;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;

@@ -1,4 +1,4 @@
-package constant;
+package com.llx.constant;
 
 import java.io.File;
 
@@ -11,7 +11,7 @@ public enum SysInfo {
         @Override
         protected String getValue() {
             // TODO:llx 从System.property中找外部传入的"properties.file.path"，如果没有则返回当前jar包中的根路径
-            /** @see task.Test */
+            /** @see com.llx.task.Test */
             String configFilePath = System.getProperty("config.file.path");
             if (null != configFilePath && !"".equals(configFilePath)) {
                 if (new File(configFilePath).exists()) {

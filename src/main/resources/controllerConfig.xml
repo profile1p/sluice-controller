@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/context
-               http://www.springframework.org/schema/context/spring-context-4.1.xsd
-               http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
                http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:property-placeholder location="${config.file.path}"/>
-
     <!-- 电台串口 -->
-    <bean id="radioPortConfig" class="bean.SerialPortConfigBean">
+    <bean id="radioPortConfig" class="com.llx.bean.SerialPortConfigBean">
         <property name="port" value="${radio.port}"/>
         <property name="baudrate" value="${radio.baudrate}"/>
         <property name="timeout" value="${radio.timeout}"/>
     </bean>
 
     <!-- 传感器串口 -->
-    <bean id="sensorPortConfig" class="bean.SerialPortConfigBean">
+    <bean id="sensorPortConfig" class="com.llx.bean.SerialPortConfigBean">
         <property name="port" value="${sensor.port}"/>
         <property name="baudrate" value="${sensor.baudrate}"/>
         <property name="timeout" value="${sensor.timeout}"/>
     </bean>
 
     <!-- 控制器串口 -->
-    <bean id="switchPortConfig" class="bean.SerialPortConfigBean">
+    <bean id="switchPortConfig" class="com.llx.bean.SerialPortConfigBean">
         <property name="port" value="${switch.port}"/>
         <property name="baudrate" value="${switch.baudrate}"/>
         <property name="timeout" value="${switch.timeout}"/>

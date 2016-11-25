@@ -1,6 +1,6 @@
-package bean;
+package com.llx.bean;
 
-import common.CRC16;
+import com.llx.common.CRC16;
 
 /**
  * @author Lilx

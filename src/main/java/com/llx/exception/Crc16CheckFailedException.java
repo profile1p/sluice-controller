@@ -1,4 +1,4 @@
-package exception;
+package com.llx.exception;
 
 /**
  * @author Lilx
